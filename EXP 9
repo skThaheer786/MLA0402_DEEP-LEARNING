@@ -1,0 +1,31 @@
+import numpy as np
+
+# Input
+x = 1
+
+# Initial weight
+w = 0.5
+
+# Target output
+y = 2
+
+# Learning rate
+lr = 0.1
+
+# Forward Propagation
+pred = w * x
+
+# Loss
+loss = (pred - y) ** 2
+
+# Gradient
+gradient = 2 * (pred - y) * x
+
+# Weight Update
+new_weight = w - lr * gradient
+
+print("Old Weight =", w)
+print("Prediction =", pred)
+print("Loss =", loss)
+print("Gradient =", gradient)
+print("New Weight =", new_weight)
