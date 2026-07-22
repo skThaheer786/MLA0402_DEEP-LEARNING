@@ -1,0 +1,26 @@
+from sklearn.linear_model import SGDRegressor, LinearRegression
+from sklearn.datasets import make_regression
+from sklearn.model_selection import train_test_split
+
+# Generate dataset
+X, y = make_regression(
+    n_samples=500,
+    n_features=1,
+    noise=10,
+    random_state=1
+)
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=1
+)
+
+# SGD Regressor
+sgd = SGDRegressor(max_iter=1000, random_state=1)
+sgd.fit(X_train, y_train)
+
+# Linear Regression
+lr = LinearRegression()
+lr.fit(X_train, y_train)
+
+print("SGD Score =", round(sgd.score(X_test, y_test),2))
+print("Batch Gradient Descent Score =", round(lr.score(X_test, y_test),2))
